@@ -1,26 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import express from 'express';
-import { PrismaClient } from '@prisma/client';
-import dotenv from 'dotenv';
+// Este archivo se mantiene para compatibilidad con código existente
+// La aplicación principal está en app.ts y server.ts
+import { app } from './app';
+import prisma from './lib/prisma';
 
-dotenv.config();
-const prisma = new PrismaClient();
-
-export const app = express();
+export { app };
 export default prisma;
-
-const port = 3010;
-
-app.get('/', (req, res) => {
-  res.send('Hola LTI!');
-});
-
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.type('text/plain'); 
-  res.status(500).send('Something broke!');
-});
-
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});

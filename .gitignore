@@ -27,3 +27,7 @@ yarn-error.log*
 
 # .env
 
+# Uploads directory
+**/uploads
+backend/uploads
+
